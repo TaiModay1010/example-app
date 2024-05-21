@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('products', ProductController::class);
+Route::get('products/report', [ProductController::class, 'report'])->name('products.report');
+

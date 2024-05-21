@@ -58,4 +58,13 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
+    public function report()
+{
+    $report = Product::select('productType', \DB::raw('SUM(quantity) as total_quantity'))
+                      ->groupBy('productType')
+                      ->get();
+
+    return view('products.report', compact('report'));
+}
+
 }
